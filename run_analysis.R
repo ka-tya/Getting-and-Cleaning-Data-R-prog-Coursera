@@ -1,8 +1,8 @@
 # create a data directory if not available yet
 if(!file.exists("./data")){dir.create("./data")}
 #download file
-fileUrl<-"http://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(fileUrl,destfile="./data/HAR.zip")
+fileUrl<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileUrl,destfile="./data/HAR.zip", method="curl")
 #unzip the folder
 unzip("./data/HAR.zip", exdir="./data")
 #check what has been extracted
@@ -38,7 +38,7 @@ list.files("./data/UCI HAR Dataset/test")
 #link labels. Replace the y with names from the 2nd column of labels data
 y_merged<-labels[y_merged[,1],2]
 #add y column name:
-#names(y_merged)<-"activity" #ne rabotaet po4emu-to
+#names(y_merged)<-"activity" #doesn't perform right
 #add subject column name
 names(subject_merged)<-"subject"
 # combine the data
